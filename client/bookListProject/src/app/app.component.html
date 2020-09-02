@@ -1,0 +1,38 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div style="text-align:center">
+  <h1>
+    Welcome to {{ title }}!!</h1>
+    <ul id="book-list">
+    <li *ngFor="let book of books" (click)="seeBookDetails(book.id)">{{book.name}}
+    
+    </li>
+    
+           </ul>
+          
+       
+    
+    <form  id="add-book" #form="ngForm">
+      <div className="field">
+        <label>Book name</label>
+        <input type="text" class="form-control rounded-0" [(ngModel)]="name" name="name" required>
+        <!-- <small class="text-danger" *ngIf="email.invalid && email.touched">email is required</small> -->
+      </div>
+      <div className="field">
+        <label>Genre</label>
+        <input type="text" class="form-control rounded-0" [(ngModel)]="genre" name="genre" required>
+        <!-- <small class="text-danger" *ngIf="password.invalid && password.touched">Password is required</small> -->
+      </div>
+
+      <div className="field">
+        <label>Authors</label>
+        <select [(ngModel)]="authorId"name="authorId" >
+          <option *ngFor="let author of authors" [value]="author.id">{{author.name}}</option>
+        </select>
+     </div>
+      <button type="button" (click)="addBook()" [disabled]="form.invalid" class="btn btn-success float-right">+</button>
+    </form>
+  
+    <app-book-details [book]="book"> </app-book-details>
+</div>
+
+<router-outlet></router-outlet>

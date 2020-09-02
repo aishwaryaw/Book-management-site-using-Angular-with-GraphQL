@@ -1,0 +1,33 @@
+<div id="book-details" *ngIf="book">
+    <div>
+        <h2>{{ book.name }}</h2>
+        <p>{{ book.genre }}</p>
+        <p>{{ book.author.name }}</p>
+        <p>All books by this author:</p>
+        <ul className="other-books" *ngFor="let author of book.author.books">
+               {{author.name}}
+            </ul>
+            <button type="button" (click)="deleteBook(book.id)"  class="btn btn-success float-right">delete</button>
+            <button type="button" (click)="update()"  class="btn btn-success float-right">Update</button>
+    </div>   
+            <form  *ngIf="show" id="add-book" #form="ngForm">
+                <div className="field">
+                  <label>Book name</label>
+                  <input type="text" class="form-control rounded-0" [(ngModel)]="name" name="name" required>
+                  <!-- <small class="text-danger" *ngIf="email.invalid && email.touched">email is required</small> -->
+                </div>
+                <div className="field">
+                  <label>Genre</label>
+                  <input type="text" class="form-control rounded-0" [(ngModel)]="genre" name="genre" required>
+                  <!-- <small class="text-danger" *ngIf="password.invalid && password.touched">Password is required</small> -->
+                </div>
+          
+                <div className="field">
+                  <label>Authors</label>
+                  <select [(ngModel)]="authorId" name="authorId" >
+                    <option *ngFor="let author of authors" [value]="author.id">{{author.name}}</option>
+                  </select>
+               </div>
+                <button type="button" (click)="updateBook(book.id)" [disabled]="form.invalid" class="btn btn-success float-right">Update</button>
+              </form>
+</div>
