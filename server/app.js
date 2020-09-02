@@ -9,7 +9,7 @@ const app = express();
 //allow cross-origin requests
 app.use(cors());
 
-mongoose.connect('mongodb+srv://aish:candsus9*@cluster0-ez6pj.mongodb.net/GraphQL?retryWrites=true&w=majority',(err)=>
+mongoose.connect('mongodb url here',(err)=>
 {
     if(err)
     console.log('Error');
